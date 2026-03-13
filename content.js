@@ -367,17 +367,17 @@
   }
 
   async function translateSegments(segments, targetLanguage) {
-    const translated = [];
+    const translations = [];
     for (const segment of segments) {
-      const translation = await callTranslationAPI(segment.text, targetLanguage);
-      translated.push({
+      const translationResult = await callTranslationAPI(segment.text, targetLanguage);
+      translations.push({
         start: segment.start,
         end: segment.end,
         original: segment.text,
-        translated
+        translated: translationResult
       });
     }
-    return translated;
+    return translations;
   }
 
   function extractTerms(segments) {
@@ -587,3 +587,4 @@
     showStatus('出现异常，请打开控制台查看详情。');
   });
 })();
+
