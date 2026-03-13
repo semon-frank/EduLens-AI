@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Coursera Translator Overlay",
+  "description": "Preloads Coursera subtitles, translates them into several languages, and displays verified, annotated translations with term explanations.",
+  "version": "0.1.0",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.coursera.org/*",
+    "https://en.wikipedia.org/*",
+    "https://translation.googleapis.com/*",
+    "https://translate.googleapis.com/*",
+    "https://api-free.deepl.com/*",
+    "https://api.cognitive.microsofttranslator.com/*",
+    "https://*.translate.goog/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.coursera.org/*"],
+      "js": ["src/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
